@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  kali-thm:
+    build: .
+    container_name: kali_thm
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    volumes:
+      - ./workspace:/workspace
+      - ./tarea1.sh:/usr/local/bin/tarea1 # Monta y convierte el script en comando ejecutable automáticamente
