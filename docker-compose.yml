@@ -12,4 +12,3 @@ services:
       - /dev/net/tun
     volumes:
       - ./workspace:/workspace
-      - ./tarea1.sh:/usr/local/bin/tarea1 # Monta y convierte el script en comando ejecutable automáticamente

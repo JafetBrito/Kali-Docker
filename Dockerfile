@@ -32,7 +32,6 @@ RUN echo 'export PATH=$PATH:/usr/games' >> ~/.bashrc && \
     echo 'fastfetch' >> ~/.bashrc && \
     echo 'figlet -f small -- "-Jafet Brito -" | lolcat' >> ~/.bashrc && \
     echo 'figlet -f small -- "-Ingenieria de la realidad-" | lolcat' >> ~/.bashrc && \
-    echo 'echo -e "\nEscribe \e[1;33mtarea1\e[0m para ver tu primera misión.\n"' >> ~/.bashrc && \
     echo 'alias oliver="echo '\''Miau. Hack the planet.'\'' | lolcat && sleep 1 && cmatrix -C green"' >> ~/.bashrc
 
 # 5. ENTORNO DE TRABAJO
