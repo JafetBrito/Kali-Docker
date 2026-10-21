@@ -4,11 +4,11 @@ services:
   kali-thm:
     build: .
     container_name: kali_thm
-    stdin_open: true
-    tty: true
     cap_add:
       - NET_ADMIN
     devices:
       - /dev/net/tun
+    ports:
+      - "8080:8080"
     volumes:
       - ./workspace:/workspace
