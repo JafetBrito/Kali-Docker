@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones AttackBox - Ingeniería de la Realidad</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #161b22;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+            box-shadow: 0 0 15px rgba(63, 185, 80, 0.15);
+        }
+        h1, h2, h3 {
+            color: #58a6ff;
+            text-align: center;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+        }
+        h1 span {
+            color: #3fb950;
+            font-size: 0.8em;
+        }
+        h2 {
+            text-align: left;
+            margin-top: 30px;
+            color: #c9d1d9;
+        }
+        .command-box {
+            background-color: #010409;
+            border-left: 4px solid #3fb950;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 1.1em;
+            overflow-x: auto;
+            color: #ff7b72;
+            font-weight: bold;
+        }
+        .explanation {
+            background-color: #1f2428;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #30363d;
+        }
+        ul {
+            margin-top: 5px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+            padding-top: 20px;
+        }
+        .highlight {
+            color: #f2cc60;
+            font-family: monospace;
+            background: #161b22;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .warning {
+            color: #ff7b72;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>👨‍💻 Ingeniería de la Realidad<br><span>Jafet Brito</span></h1>
+    
+    <p style="text-align: center; font-size: 1.1em;">🚀 <strong>Guía Definitiva de Instalación: AttackBox en Windows</strong></p>
+    <p style="text-align: center;">Bienvenido a la Matrix. Aquí tienes todas las instrucciones y el listado absoluto de comandos para controlar tu entorno de hacking.</p>
+
+    <div class="explanation" style="text-align: center;">
+        <h3>🔗 Repositorio Oficial de GitHub</h3>
+        <p>👉 <a href="https://github.com/JafetBrito/tryhackme-attackbox" target="_blank">github.com/JafetBrito/tryhackme-attackbox</a> 👈</p>
+    </div>
+
+    <h2>🛠️ Paso 1: Instalar Docker Desktop</h2>
+    <p>Docker es el motor que ejecutará nuestro Kali Linux virtualizado sin afectar a tu Windows.</p>
+    <div class="explanation">
+        <p>1. Descarga <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop para Windows</a>.</p>
+        <p>2. Al instalar, asegúrate de marcar la casilla para usar <strong>WSL 2</strong> (Windows Subsystem for Linux).</p>
+        <p>3. Abre el programa y espera a que el icono se ponga verde indicando que el motor está corriendo.</p>
+    </div>
+
+    <h2>📦 Paso 2: Clonar el Código</h2>
+    <p>Abre tu terminal de <strong>PowerShell</strong> y descarga los archivos del canal:</p>
+    <div class="command-box">
+        git clone https://github.com/JafetBrito/tryhackme-attackbox.git<br>
+        cd tryhackme-attackbox
+    </div>
+    <div class="explanation">
+        <p><em>⚠️ Importante: Mueve tu archivo .ovpn descargado de TryHackMe adentro de la carpeta "workspace" antes de continuar.</em></p>
+    </div>
+
+    <h2>🏗️ Paso 3: Construir el Entorno (Primera Vez)</h2>
+    <p>La primera vez que levantes la máquina tomará unos minutos mientras descarga todo. Ejecuta:</p>
+    <div class="command-box">
+        docker compose up -d --build
+    </div>
+
+    <h2>💻 Paso 4: Entrar a la AttackBox (Interfaz Gráfica)</h2>
+    <p>Abre tu navegador (Chrome o Edge) e ingresa a:</p>
+    <div class="command-box">
+        http://localhost:8080/vnc.html
+    </div>
+    <div class="explanation">
+        <p>Haz clic en el botón <strong>Connect</strong> y usa la contraseña: <span class="highlight">kali</span></p>
+    </div>
+
+    <h2>🛡️ Paso 5: Enlazar la VPN</h2>
+    <p>Dentro de la terminal gráfica de tu AttackBox, ejecuta:</p>
+    <div class="command-box">
+        openvpn --config /workspace/tu_archivo.ovpn &
+    </div>
+    <div class="explanation">
+        <p><em>El ampersand (&) al final es para que corra en segundo plano. Verifica con <span class="highlight">ip a</span> que exista la tarjeta tun0.</em></p>
+    </div>
+
+    <hr style="border: 1px solid #30363d; margin: 40px 0;">
+
+    <h2>🧰 LA CAJA DE HERRAMIENTAS: Todos los comandos de Docker</h2>
+    <p>Aquí tienes la lista completa de comandos que necesitarás para operar el entorno en el día a día. Todos se ejecutan desde tu PowerShell de Windows, dentro de la carpeta del proyecto.</p>
+
+    <h3>🟢 Encender la máquina (Día a día)</h3>
+    <p>Cuando ya la construiste la primera vez y solo quieres prenderla para jugar:</p>
+    <div class="command-box">
+        docker compose up -d
+    </div>
+    <div class="explanation">
+        <p>Enciende el contenedor en segundo plano en cuestión de segundos.</p>
+    </div>
+
+    <h3>🔴 Apagar la máquina</h3>
+    <p>Para cerrar la AttackBox y liberar tu memoria RAM:</p>
+    <div class="command-box">
+        docker compose down
+    </div>
+
+    <h3>🔄 Reconstruir la máquina (Aplicar cambios)</h3>
+    <p>Si modificaste el Dockerfile (por ejemplo, para agregar una nueva herramienta), debes forzar a que se reconstruya:</p>
+    <div class="command-box">
+        docker compose up -d --build
+    </div>
+
+    <h3>⌨️ Entrar a la terminal directa (Sin entorno gráfico)</h3>
+    <p>Si no quieres usar el navegador y solo quieres una terminal rápida desde tu PowerShell:</p>
+    <div class="command-box">
+        docker exec -it kali_thm bash
+    </div>
+
+    <h3>💥 Destrucción Total (Limpieza Profunda)</h3>
+    <p>Si algo se rompió, quieres borrar absolutamente todo rastro de la AttackBox y liberar espacio en el disco duro:</p>
+    <div class="command-box">
+        docker compose down -v --rmi all
+    </div>
+    <div class="explanation">
+        <p class="warning">⚠️ Advertencia: Esto borrará la imagen descargada de Kali. Tendrás que volver a descargar los 2GB la próxima vez que uses --build.</p>
+    </div>
+
+    <h3>📋 Ver los registros (Logs)</h3>
+    <p>Si el contenedor no enciende o la página web no carga, esto te mostrará los errores de fondo:</p>
+    <div class="command-box">
+        docker compose logs -f
+    </div>
+    <div class="explanation">
+        <p>Usa <span class="highlight">Ctrl + C</span> para salir de esta vista.</p>
+    </div>
+
+    <h3>⬇️ Actualizar el código desde GitHub</h3>
+    <p>Si Jafet Brito sube una nueva versión de la AttackBox al repositorio, puedes actualizar tus archivos locales con:</p>
+    <div class="command-box">
+        git pull origin main
+    </div>
+
+    <div class="footer">
+        <p>Ingeniería de la Realidad - Jafet Brito © 2026</p>
+        <p>🐈 Hack the planet.</p>
+    </div>
+</div>
+
+</body>
+</html>
